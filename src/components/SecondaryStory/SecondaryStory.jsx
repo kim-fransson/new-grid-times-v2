@@ -5,14 +5,20 @@ import { QUERIES } from "../../constants";
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
     <a href={`/story/${id}`}>
-      <Wrapper>
-        <Image alt={image.alt} src={image.src} />
-        <Heading>{title}</Heading>
-        <Abstract>{abstract}</Abstract>
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <Image alt={image.alt} src={image.src} />
+          <Heading>{title}</Heading>
+          <Abstract>{abstract}</Abstract>
+        </Wrapper>
+      </Container>
     </a>
   );
 };
+
+const Container = styled.div`
+  container-type: inline-size;
+`;
 
 const Wrapper = styled.article`
   display: grid;
@@ -23,8 +29,7 @@ const Wrapper = styled.article`
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
 
-  // container-query
-  @media ${QUERIES.tabletOnly} {
+  @container (width < ${275 / 16}rem) {
     grid-template-columns: 1fr;
     grid-template-areas:
       "image"

@@ -5,18 +5,19 @@ import { QUERIES } from "../../constants";
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
     <a href={`/story/${id}`}>
-      <Wrapper>
+      <Container>
         <Avatar alt='' src={avatar} />
         <div>
           <AuthorName>{author}</AuthorName>
           <ArticleTitle>{title}</ArticleTitle>
         </div>
-      </Wrapper>
+      </Container>
     </a>
   );
 };
 
-const Wrapper = styled.article`
+const Container = styled.article`
+  container-type: inline-size;
   color: var(--color-gray-900);
 `;
 
@@ -29,7 +30,7 @@ const Avatar = styled.img`
   float: right;
   margin-left: 16px;
 
-  @media ${QUERIES.tabletOnly} {
+  @container (width < ${180 / 16}rem) {
     float: revert;
     margin-left: revert;
   }
